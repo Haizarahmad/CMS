@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/students', [StudentController::class, 'index'])->name('students');
-    Route::get('/students/add', [StudentController::class, 'addStudentPage'])->name('students');
+    Route::get('/students/add', [StudentController::class, 'addStudentPage'])->name('students.add');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('logout', [LoginController::class, 'destroy'])

@@ -1,7 +1,7 @@
 @extends('auth.layout')
 
 @section('auth-content')
-<div class="flex items-center justify-center h-full">
+<div class="flex">
     <div class="flex-1 max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
         <div class="flex flex-col md:flex-row">
           <div class="h-32 md:h-auto md:w-1/2">
