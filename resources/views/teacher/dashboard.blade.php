@@ -6,6 +6,9 @@
     <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Dashboard
     </h2>
+    <span>
+        Classroom: 
+    </span>
     <div class="grid grid-cols-3 gap-6 mt-4">
 
     {{-- card 1 --}}

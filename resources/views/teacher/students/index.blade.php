@@ -1,6 +1,6 @@
 @extends('layouts.teacher')
 
-@section('title', 'Teacher-Dashboard')
+@section('title', 'Students')
 
 @section('teacher-content')
 <div class="flex items-center justify-between h-15">
@@ -14,8 +14,6 @@
 </div>
 <hr class="my-4" />
 <div class="mt-4">
-
-
 
 <table id="example" class="responsive">
     <thead>
