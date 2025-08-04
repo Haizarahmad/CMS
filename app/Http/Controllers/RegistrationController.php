@@ -22,12 +22,13 @@ class RegistrationController extends Controller
             'password' => ['required'],
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 1, // Default role for new users
         ]);
+
+        $user->assignRole('teacher');
 
         return redirect(route('login'));
     }

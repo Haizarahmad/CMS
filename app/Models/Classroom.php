@@ -10,4 +10,9 @@ class Classroom extends Model
         'teacher_id',
         'name',
     ];
+
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'teacher_id');
+    }
 }

@@ -15,4 +15,13 @@ class Subject extends Model
     // {
     //     return $this->belongsToMany(Exam::class);
     // }
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'student_enroll', 'subject_id', 'student_id');
+    }
+
+    public function results()
+    {
+        return $this->belongsToMany(Result::class, 'subject_result', 'subject_id', 'result_id');
+    }
 }
