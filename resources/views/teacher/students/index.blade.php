@@ -4,14 +4,18 @@
 
 @section('teacher-content')
 <div class="flex items-center justify-between h-15">
-<h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-    Students
-</h2>
-@include('teacher.students.delete-students')
-<a href="{{  route('students.add') }}" class="px-4 py-2 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-    <i class="bi bi-person-fill-add"></i>
-    Add student
-</a>
+    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Students
+    </h2>
+    @include('teacher.students.delete-students')
+    @include('teacher.students.log-activity')
+    <div class="flex gap-2">
+        <a href="{{  route('students.add') }}  " class="px-4 py-2 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+            <i class="bi bi-person-fill-add"></i>
+            Add student
+        </a>
+        <button data-popover-target="popover-bottom" data-popover-placement="bottom" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="bi bi-stopwatch"></i></button>
+    </div>
 </div>
 <hr class="my-4" />
 <div class="mt-4">

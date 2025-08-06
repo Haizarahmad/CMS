@@ -13,11 +13,11 @@ class Student extends Model
         'date_of_birth',
         'gender',
         'address',
+        'profile_img'
     ];
 
     public function subjects()
     {
-        // return $this->belongsTo('pivot class', 'foreign_key', 'owner_key')
         return $this->belongsToMany(Subject::class, 'student_enroll', 'student_id', 'subject_id');
     }
 
@@ -26,8 +26,4 @@ class Student extends Model
         return $this->belongsTo(Classroom::class, 'class_id');
     }
 
-    public function results()
-    {
-        return $this->hasMany(Result::class);
-    }
 }

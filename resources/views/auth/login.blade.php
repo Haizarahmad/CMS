@@ -21,7 +21,7 @@
             @csrf
             <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Email</span>
-            <input type="text" name="email" id="email" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+            <input type="text" name="email" id="email" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John@gmail.com" required />
             </label>
             <label class="block mt-4 text-sm">
             <span class="text-gray-700 dark:text-gray-400">Password</span>

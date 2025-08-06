@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class RegistrationController extends Controller
 {
@@ -28,8 +29,11 @@ class RegistrationController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        event(new Registered($user));
         $user->assignRole('teacher');
 
-        return redirect(route('login'));
+        Auth::login($user);
+        return to_route('dashboard');
+        // return redirect(route('login'));
     }
 }

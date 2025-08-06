@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ClassroomMail;
 use App\Models\Classroom;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class ClassroomController extends Controller
@@ -20,7 +22,7 @@ class ClassroomController extends Controller
    public function index(){
         $this->authCheck();
         return view('superadmin.classrooms.index', [
-            'teachers' => User::where('role', 1)->get(),
+            'teachers' => User::where('role', 1)->whereDoesntHave('classroom')->get(),
             'classrooms' => Classroom::all()
         ]);
     }
@@ -37,7 +39,11 @@ class ClassroomController extends Controller
             'teacher_id' => $validated['teacher_id'],
         ]);
 
-        return redirect()->route('classrooms')->with('success', 'Classroom added successfully!');
+        $teacher = User::findOrFail($validated['teacher_id']);
+
+        Mail::to($teacher->email)->send(new ClassroomMail($teacher));
+
+        return redirect()->route('classrooms')->with('success', 'Classroom added successfully and email has been sent to the homeroom teacher!');
     }
 
     public function updateClassroom(Request $request){
@@ -61,7 +67,6 @@ class ClassroomController extends Controller
     }
 
     public function deleteClassroom(Request $request){
-        $this->authCheck();
         $validated = $request->validate([
             'id' => 'required|integer',
         ]);

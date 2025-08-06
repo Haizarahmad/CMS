@@ -9,31 +9,25 @@
 </h2>
 </div>
 <hr class="my-4" />
-@if ($errors->any())
-    <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
-        <ul class="list-disc pl-5">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@include('partials.alert-message')
 <div class="mt-4">
-<form action="{{ route('students.update', $student->id) }}" method="POST">
+<form action="{{ route('students.update', $student->id) }}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
+    @include('teacher.students.edit-profile-img')
     <div class="flex items-center justify-center mb-6">
-        <div class="bg-blue-500 w-50 h-50 rounded-full"></div>
+       <div class="relative w-50 h-50">
+            <img src="{{ asset('storage/' . $student->profile_img) }}" alt="Profile Image" class="w-50 h-50 rounded-full bg-blue-500 object-cover" />
+            
+            <button type="button"
+                data-modal-target="default-modal"
+                data-modal-toggle="default-modal"
+                class="absolute bottom-0 right-2 w-10 h-10 text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <i class="bi bi-camera-fill"></i>
+            </button>
+        </div>
     </div>        
     <div class="grid gap-6 mb-6 md:grid-cols-2">
-        {{-- <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Classroom</label>
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled />
-        </div>
-        <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hometeacher</label>
-            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled />
-        </div> --}}
         <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Student name</label>
             <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $student->name }}" required />
@@ -74,7 +68,8 @@
             @endforeach
         </div>
     </div>
-    <button type="submit" class="text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+    <button type="submit" class="text-white bg-purple-700 mt-4 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">Save</button>
+ <button type="submit" class="text-white bg-blue-700 mt-4 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
 </form>
 
 
