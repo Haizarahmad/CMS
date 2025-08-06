@@ -70,6 +70,7 @@ Follow these steps to set up the project locally:
 11. Login using the default admin credentials:
 
 ## Login Credentials
+Website Link: http://cms-skmk.liveblog365.com
 
 1. Admin
    Email: superadmin@gmail.com
